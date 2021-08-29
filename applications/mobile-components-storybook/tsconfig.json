@@ -20,8 +20,7 @@
     ".storybook/addons.ts",
     ".storybook/rn-addons.ts",
     ".storybook/generated-story-loader.js",
-    ".storybook/generated-story-loader.d.ts",
-    "__generated__/AppEntry.js"
+    ".storybook/generated-story-loader.d.ts"
   ],
   "include": ["typings"],
   "exclude": [

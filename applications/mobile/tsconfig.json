@@ -14,10 +14,7 @@
       { "path": "../../packages/brand" },
       { "path": "../../packages/mobile-components" }
   ],
-  "files": [
-    "App.tsx",
-    "__generated__/AppEntry.js"
-  ],
+  "files": ["App.tsx"],
   "include": ["src", "typings"],
   "exclude": [
     "**/node_modules/*",
