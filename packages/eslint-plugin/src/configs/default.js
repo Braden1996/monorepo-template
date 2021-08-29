@@ -1,8 +1,9 @@
+const {getMonorepoPackagePrefix} = require('@monorepo-template/monorepo-helpers')
+
 const jestOverride = require('../overrides/jest');
 const prettierOverride = require('../overrides/prettier');
 const typescriptOverride = require('../overrides/typescript');
 const typescriptParser = require('../overrides/typescriptParser');
-const getMonorepoPackagePrefix = require('../utils/getMonorepoPackagePrefix');
 
 const monorepoPrefix = getMonorepoPackagePrefix(__dirname);
 

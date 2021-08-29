@@ -1,0 +1,17 @@
+{
+    "name": "@monorepo-template/monorepo-helpers",
+    "private": true,
+    "version": "0.0.1",
+    "main": "src/index.js",
+    "scripts": {
+        "pretest": "yarn run pretest-lint",
+        "pretest-lint": "eslint 'src/**/*.{js,ts,tsx}'",
+        "pretest-lint-fix": "eslint 'src/**/*.{js,ts,tsx}' --fix"
+    },
+    "devDependencies": {
+        "@monorepo-template/eslint-plugin": "0.0.1",
+        "eslint": "7.32.0",
+        "find-root": "^1.1.0",
+        "get-yarn-workspaces": "^1.0.2"
+    }
+}
