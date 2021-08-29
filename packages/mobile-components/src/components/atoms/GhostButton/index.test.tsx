@@ -7,12 +7,12 @@ import GhostButton from './index';
 
 describe('<GhostButton />', () => {
   it('has 1 child', () => {
-    const { container } = render(
+    const rendered = render(
       <ThemeProvider>
         <GhostButton>Hello</GhostButton>
       </ThemeProvider>,
     );
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(rendered.toJSON()).toMatchSnapshot();
   });
 });

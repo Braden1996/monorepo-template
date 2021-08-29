@@ -1,25 +1,15 @@
-/* eslint-disable @typescript-eslint/no-var-requires  */
-const path = require('path');
+const path = require('path')
+
+const getMonorepoPackagePrefix = require('../utils/getMonorepoPackagePrefix');
+
+const monorepoPrefix = getMonorepoPackagePrefix(__dirname);
 
 module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    project: path.resolve(__dirname, './tsconfig.json'),
-    tsconfigRootDir: path.resolve(__dirname, '.'),
-  },
-  extends: ['../../.eslintrc.js', 'plugin:jest/recommended'],
-  plugins: ['jest', 'react', 'react-hooks'],
+  extends: [path.join(__dirname, './default')],
+  plugins: ['react', 'react-hooks'],
   env: {
     browser: true,
     es6: true,
-    jest: true,
-    'jest/globals': true,
-  },
-  settings: {
-    jest: {
-      version: 26,
-    },
   },
   rules: {
     'react/destructuring-assignment': 0,
@@ -32,5 +22,8 @@ module.exports = {
     'react/jsx-uses-react': 1,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+  },
+  settings: {
+    'import/internal-regex': `^(${monorepoPrefix}/|@react-test-renderer)`,
   },
 };

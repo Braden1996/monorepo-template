@@ -3,12 +3,19 @@
     "private": true,
     "version": "0.0.1",
     "main": "src/index.js",
+    "scripts": {
+        "pretest": "yarn run 'pretest-lint'",
+        "pretest-lint": "eslint 'src/**/*.{js,ts,tsx}'",
+        "pretest-lint-fix": "eslint 'src/**/*.{js,ts,tsx}' --fix"
+    },
     "devDependencies": {
         "@babel/core": "^7.9.0",
         "@babel/runtime": "^7.15.3",
         "@expo/webpack-config": "^0.13.1",
+        "@monorepo-template/eslint-plugin": "0.0.1",
         "babel-loader": "^8.2.2",
         "babel-preset-expo": "^8.4.1",
+        "eslint": "7.32.0",
         "expo-yarn-workspaces": "^1.5.2",
         "metro-config": "0.56"
     }

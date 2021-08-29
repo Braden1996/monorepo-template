@@ -10,17 +10,18 @@
         "build": "tsc -b .",
         "clean": "rimraf lib",
         "test": "jest",
-        "test:watch": "yarn run test:jest --watch",
-        "pretest": "run-p 'pretest:*'",
-        "pretest:typescript": "tsc -b .",
-        "pretest:lint": "eslint 'src/**/*.{js,ts,tsx}'",
-        "pretest:lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
+        "test-watch": "yarn run test --watch",
+        "pretest": "run-p 'pretest-typescript' 'pretest-lint'",
+        "pretest-typescript": "tsc -b .",
+        "pretest-lint": "eslint 'src/**/*.{js,ts,tsx}'",
+        "pretest-lint-fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
         "coverage": "jest --coverage"
     },
     "dependencies": {
         "color": "^4.0.0"
     },
     "devDependencies": {
+        "@monorepo-template/eslint-plugin": "0.0.1",
         "@types/color": "^3.0.2",
         "@types/jest": "^26.0.24",
         "eslint": "7.32.0",

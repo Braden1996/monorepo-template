@@ -7,8 +7,6 @@ import { CenterView } from '../../../utils/story-layout/CenterVew';
 
 import GhostButton from './index';
 
-console.log('Hello world!');
-
 storiesOf('GhostButton', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
   .add('with text', () => (

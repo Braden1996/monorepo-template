@@ -1,3 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GhostButton /> has 1 child 1`] = `undefined`;
+exports[`<GhostButton /> has 1 child 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderRadius": 2,
+        "flexDirection": "row",
+        "paddingBottom": 8,
+        "paddingLeft": 8,
+        "paddingRight": 8,
+        "paddingTop": 8,
+      },
+    ]
+  }
+>
+  <Text
+    selected={false}
+    small={false}
+    style={
+      Array [
+        Object {
+          "color": "rgb(28, 28, 30)",
+        },
+      ]
+    }
+  >
+    Hello
+  </Text>
+</View>
+`;

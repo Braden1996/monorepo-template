@@ -11,7 +11,7 @@ export default function useCachedResources() {
   React.useEffect(() => {
     async function loadResourcesAndDataAsync() {
       try {
-        SplashScreen.preventAutoHideAsync();
+        await SplashScreen.preventAutoHideAsync();
 
         // Load fonts
         await Font.loadAsync(Ionicons.font);
@@ -20,11 +20,11 @@ export default function useCachedResources() {
         console.warn(e);
       } finally {
         setLoadingComplete(true);
-        SplashScreen.hideAsync();
+        await SplashScreen.hideAsync();
       }
     }
 
-    loadResourcesAndDataAsync();
+    void loadResourcesAndDataAsync();
   }, []);
 
   return isLoadingComplete;
