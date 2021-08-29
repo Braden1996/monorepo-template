@@ -1,0 +1,15 @@
+# Testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# Local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel

@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./",
+    "composite": true,
+    "outDir": "lib",
+    "jsx": "react-native",
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "tsBuildInfoFile": "../../.build-cache/applications-mobile.tsbuildinfo"
+  },
+  "references": [
+      { "path": "../../packages/brand" },
+      { "path": "../../packages/mobile-components" }
+  ],
+  "files": [
+    "App.tsx",
+    "__generated__/AppEntry.js"
+  ],
+  "include": ["src", "typings"],
+  "exclude": [
+    "**/node_modules/*",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}

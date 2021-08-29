@@ -1,0 +1,57 @@
+{
+  "name": "@monorepo-template/mobile-components",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.ts",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "test": "jest",
+    "test:updateSnapshot": "jest --updateSnapshot",
+    "test:watch": "yarn run test --watch",
+    "pretest": "run-p 'pretest:*'",
+    "pretest:typescript": "tsc -b .",
+    "pretest:lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "pretest:lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
+    "coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@monorepo-template/brand": "0.0.1",
+    "expo": "~42.0.3",
+    "lodash": "^4.17.21",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-is": "^17.0.2",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-web": "^0.17.1",
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/react-native": "^5.3.25",
+    "@testing-library/jest-native": "^4.0.1",
+    "@testing-library/react-native": "^7.2.0",
+    "@types/jest": "^26.0.24",
+    "@types/joi": "^17.2.3",
+    "@types/lodash": "^4.14.171",
+    "@types/react": "~16.9.35",
+    "@types/react-is": "^17.0.2",
+    "@types/react-native": "~0.63.2",
+    "@types/styled-components-react-native": "^5.1.1",
+    "babel-jest": "^27.0.6",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "7.32.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "26.6.0",
+    "jest-styled-components": "^7.0.5",
+    "npm-run-all": "4.1.5",
+    "react-test-renderer": "^17.0.2",
+    "rimraf": "3.0.2",
+    "typescript": "4.3.5"
+  }
+}

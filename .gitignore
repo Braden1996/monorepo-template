@@ -1,0 +1,37 @@
+# Node
+node_modules
+yarn-error.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Yarn2
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# TypeScript
+.build-cache/*
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# MacOs
+.DS_Store
+
+# Packages
+applications/*/build
+applications/*/dist
+applications/*/lib
+packages/*/build
+packages/*/dist
+packages/*/lib
+
+# Logs
+*.log

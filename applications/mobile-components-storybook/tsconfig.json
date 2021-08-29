@@ -1,0 +1,33 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./",
+    "composite": true,
+    "outDir": "lib",
+    "jsx": "react-native",
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "tsBuildInfoFile": "../../.build-cache/packages-mobile-components-storybook.tsbuildinfo"
+  },
+  "references": [
+      { "path": "../../packages/brand" },
+      { "path": "../../packages/mobile-components" }
+  ],
+  "files": [
+    "App.tsx",
+    ".storybook/addons.ts",
+    ".storybook/rn-addons.ts",
+    ".storybook/generated-story-loader.js",
+    ".storybook/generated-story-loader.d.ts",
+    "__generated__/AppEntry.js"
+  ],
+  "include": ["typings"],
+  "exclude": [
+    "**/node_modules/*",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}

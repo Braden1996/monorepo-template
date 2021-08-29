@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    // Project References
+    "module": "commonjs",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "composite": true,
+    "moduleResolution": "node",
+    "target": "ES2020",
+    "lib": ["ESNext"],
+
+    // Strict Mode
+    "forceConsistentCasingInFileNames": true,
+    "noErrorTruncation": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "strict": true,
+
+    // Extra
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+
+    // TODO: conflict between node/globals.d.ts and react-native/globals.d.ts
+    // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33311
+    "skipLibCheck": true
+  },
+  "exclude": ["**/node_modules/**"]
+}

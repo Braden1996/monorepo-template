@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "tsBuildInfoFile": "../../.build-cache/packages-web-components.tsbuildinfo",
+    "target": "ES5",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src",
+    "typings"
+  ],
+  "references": [
+    {
+      "path": "../brand",
+      "prepend": false
+    }
+  ]
+}

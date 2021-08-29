@@ -1,0 +1,79 @@
+name: Publish Expo Releases on Pull Request
+
+on:
+  pull_request:
+
+jobs:
+  check-publish-expo-releases:
+    name: 'Check if we can Publish Expo Releases'
+    runs-on: ubuntu-latest
+    outputs:
+        secret_exists: ${{ steps.secret_check.outputs.SECRET_EXISTS }}
+    steps:
+        - id: secret_check
+          env:
+              EXPO_ORGANIZATION: ${{ secrets.EXPO_ORGANIZATION }}
+          if: "${{ env.EXPO_ORGANIZATION != '' }}"
+          run: echo "::set-output name=SECRET_EXISTS::true"
+
+  publish-expo-releases:
+    name: Publish Expo Releases
+    needs: [check-publish-expo-releases]
+    if: needs.check-publish-expo-releases.outputs.secret_exists == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v6
+        with:
+          expo-version: 4.x
+          token: ${{ secrets.EXPO_TOKEN }}
+          expo-cache: true
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.4'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn2-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn2-
+
+      - name: Install Node Dependencies
+        run: yarn install --immutable
+
+      - name: Publish Mobile-Components-Storybook Expo app
+        working-directory: packages/mobile-components-storybook
+        run: expo publish --release-channel=pr-${{ github.event.number }}
+
+      - name: Publish Mobile Expo app
+        working-directory: applications/mobile
+        run: expo publish --release-channel=pr-${{ github.event.number }}
+
+      - uses: actions/github-script@v3
+        env:
+          EXPO_ORGANIZATION: ${{ secrets.EXPO_ORGANIZATION }}
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'The mobile expo deployment is ready!\n\nYou can [see the Mobile Components Storybook here](https://expo.io/${{ env.EXPO_ORGANIZATION }}/mobile-components-storybook?release-channel=pr-${{ github.event.number }}) on the Expo Go app.\n<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://expo.io/${{ env.EXPO_ORGANIZATION }}/mobile-components-storybook?release-channel=pr-${{ github.event.number }}" height="200px" width="200px">.\n\nAnd you can [see the Mobile app here](https://expo.io/${{ env.EXPO_ORGANIZATION }}/mobile?release-channel=pr-${{ github.event.number }}) on the Expo Go app.\n<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://expo.io/${{ env.EXPO_ORGANIZATION }}/mobile?release-channel=pr-${{ github.event.number }}" height="200px" width="200px">.'
+            })

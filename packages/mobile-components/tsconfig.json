@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "composite": true,
+    "outDir": "lib",
+    "jsx": "react-native",
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "tsBuildInfoFile": "../../.build-cache/packages-mobile-components.tsbuildinfo"
+  },
+  "references": [
+      { "path": "../brand" }
+  ],
+  "include": ["src", "typings"],
+  "exclude": [
+    "**/node_modules/*",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}

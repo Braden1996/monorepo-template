@@ -1,0 +1,36 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES5",
+    "lib": ["DOM", "ESNext"],
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "tsBuildInfoFile": "../../.build-cache/applications-marketing-site.tsbuildinfo",
+    "incremental": true,
+
+    // Override suggestions by NextJS
+    "allowJs": false,
+    "skipLibCheck": true,
+    "noEmit": false,
+
+    // Required by NextJS
+    "jsx": "preserve",
+    "isolatedModules": true,
+  },
+  "include": [
+    "next-env.d.ts",
+    "typings",
+    "./src/**/*",
+    "./src/**/*.json"
+  ],
+  "references": [
+    {
+      "path": "../../packages/brand",
+      "prepend": false
+    },
+    {
+      "path": "../../packages/web-components",
+      "prepend": false
+    }
+  ]
+}
