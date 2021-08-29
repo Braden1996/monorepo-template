@@ -1,0 +1,25 @@
+{
+    "name": "@monorepo-template/jest-config",
+    "private": true,
+    "version": "0.0.1",
+    "main": "./jest-preset.js",
+    "files": [
+        "presets",
+        "setup"
+    ],
+    "scripts": {
+        "pretest": "yarn run pretest-lint",
+        "pretest-lint": "eslint '{presets,src}/**/*.{js,ts,tsx}'",
+        "pretest-lint-fix": "eslint '{presets,src}/**/*.{js,ts,tsx}' --fix"
+    },
+    "devDependencies": {
+        "@monorepo-template/eslint-plugin": "0.0.1",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@types/jest": "^26.0.24",
+        "babel-jest": "^27.0.6",
+        "eslint": "7.32.0",
+        "jest": "26.6.0",
+        "jest-styled-components": "^7.0.5",
+        "ts-jest": "^26.5.6"
+    }
+}

@@ -3646,7 +3646,6 @@ __metadata:
     jest: 26.6.0
     npm-run-all: 4.1.5
     rimraf: 3.0.2
-    ts-jest: ^26.5.6
     typescript: 4.3.5
   languageName: unknown
   linkType: soft
@@ -3655,6 +3654,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@monorepo-template/eslint-plugin@workspace:packages/eslint-plugin"
   dependencies:
+    "@monorepo-template/monorepo-helpers": 0.0.1
     "@typescript-eslint/eslint-plugin": ^4.28.5
     "@typescript-eslint/parser": ^4.28.5
     eslint: 7.32.0
@@ -3686,6 +3686,21 @@ __metadata:
     eslint: 7.32.0
     expo-yarn-workspaces: ^1.5.2
     metro-config: 0.56
+  languageName: unknown
+  linkType: soft
+
+"@monorepo-template/jest-config@workspace:packages/jest-config":
+  version: 0.0.0-use.local
+  resolution: "@monorepo-template/jest-config@workspace:packages/jest-config"
+  dependencies:
+    "@monorepo-template/eslint-plugin": 0.0.1
+    "@testing-library/jest-dom": ^5.14.1
+    "@types/jest": ^26.0.24
+    babel-jest: ^27.0.6
+    eslint: 7.32.0
+    jest: 26.6.0
+    jest-styled-components: ^7.0.5
+    ts-jest: ^26.5.6
   languageName: unknown
   linkType: soft
 
@@ -3750,12 +3765,10 @@ __metadata:
     "@types/react-native": ~0.63.2
     "@types/react-test-renderer": ^17.0.1
     "@types/styled-components-react-native": ^5.1.1
-    babel-jest: ^27.0.6
     babel-plugin-module-resolver: ^4.1.0
     eslint: 7.32.0
     expo: ~42.0.3
     jest: 26.6.0
-    jest-styled-components: ^7.0.5
     lodash: ^4.17.21
     npm-run-all: 4.1.5
     react: 16.13.1
@@ -3790,7 +3803,6 @@ __metadata:
     "@types/react": ~16.9.35
     "@types/react-native": ~0.63.2
     "@types/styled-components-react-native": ^5.1.1
-    babel-jest: ^27.0.6
     babel-plugin-module-resolver: ^4.1.0
     eslint: 7.32.0
     expo: ~42.0.3
@@ -3803,8 +3815,6 @@ __metadata:
     expo-web-browser: ~9.2.0
     expo-yarn-workspaces: ^1.5.2
     jest: 26.6.0
-    jest-styled-components: ^7.0.5
-    jest-transform-stub: ^2.0.0
     metro-config: 0.56
     npm-run-all: 4.1.5
     react: 16.13.1
@@ -3819,6 +3829,17 @@ __metadata:
     styled-components: ^5.3.0
     typescript: 4.3.5
     utility-types: ^3.10.0
+  languageName: unknown
+  linkType: soft
+
+"@monorepo-template/monorepo-helpers@0.0.1, @monorepo-template/monorepo-helpers@workspace:packages/monorepo-helpers":
+  version: 0.0.0-use.local
+  resolution: "@monorepo-template/monorepo-helpers@workspace:packages/monorepo-helpers"
+  dependencies:
+    "@monorepo-template/eslint-plugin": 0.0.1
+    eslint: 7.32.0
+    find-root: ^1.1.0
+    get-yarn-workspaces: ^1.0.2
   languageName: unknown
   linkType: soft
 
@@ -3837,7 +3858,6 @@ __metadata:
     "@storybook/preset-create-react-app": ^3.2.0
     "@storybook/react": ^6.3.6
     "@testing-library/dom": ^8.1.0
-    "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^12.0.0
     "@testing-library/user-event": ^13.2.1
     "@types/jest": ^26.0.24
@@ -3851,7 +3871,6 @@ __metadata:
     chromatic: ^5.10.0-canary.0
     eslint: 7.32.0
     jest: 26.6.0
-    jest-styled-components: ^7.0.5
     lodash: ^4.17.21
     npm-run-all: 4.1.5
     object-hash: ^2.2.0
@@ -3864,7 +3883,6 @@ __metadata:
     styled-media-query: ^2.1.2
     styled-reset: ^4.3.4
     themeprovider-storybook: ^1.7.2
-    ts-jest: ^26.5.6
     typescript: 4.3.5
   languageName: unknown
   linkType: soft
@@ -3877,7 +3895,6 @@ __metadata:
     "@monorepo-template/eslint-plugin": 0.0.1
     "@monorepo-template/web-components": 0.0.1
     "@testing-library/dom": ^8.1.0
-    "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^12.0.0
     "@testing-library/user-event": ^13.2.1
     "@types/jest": ^26.0.24
@@ -3885,14 +3902,12 @@ __metadata:
     "@types/react": ^17.0.15
     "@types/react-dom": ^17.0.9
     "@types/styled-components": ^5.1.11
-    babel-jest: ^26.6.0
     babel-plugin-styled-components: ^1.13.2
     eslint: 7.32.0
     eslint-config-next: ^11.0.1
     eslint-plugin-react: ^7.24.0
     eslint-plugin-react-hooks: ^4.2.0
     jest: 26.6.0
-    jest-styled-components: ^7.0.5
     next: 11.0.1
     next-compose-plugins: ^2.2.1
     next-transpile-modules: ^8.0.0
@@ -17417,13 +17432,6 @@ fsevents@^1.2.7:
   peerDependencies:
     styled-components: ">= 5"
   checksum: fef9f261dd59d6d095c1bc43da5ba5faaf87ca73dff20ff10e38f70201c35c60f6347836581c087bab6a8b26de29adc4cd657fdf2a28cf98609b2452a7368549
-  languageName: node
-  linkType: hard
-
-"jest-transform-stub@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "jest-transform-stub@npm:2.0.0"
-  checksum: c46134257e5fb047f5952e4a4a1339925dd009da15aa8d3310ba1d3e4d22266ed6c675cd18e58c9d5ca2246718d6cc8ff00ea6a4b6f3b2a6b285b6426f6ae8fe
   languageName: node
   linkType: hard
 

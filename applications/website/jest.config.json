@@ -1,8 +1,3 @@
 {
-  "testEnvironment": "jsdom",
-  "setupFilesAfterEnv": ["<rootDir>/config/jest.setup.ts"],
-  "testPathIgnorePatterns": ["/node_modules/", "<rootDir>/lib/"],
-  "transform": {
-    "\\.[jt]sx?$": "babel-jest"
-  }
+  "preset": "@monorepo-template/jest-config/presets/react"
 }
