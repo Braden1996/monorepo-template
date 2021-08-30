@@ -3,10 +3,18 @@
   "name": "@monorepo-template/babel-preset-expo",
   "version": "0.0.1",
   "main": "index.js",
+  "scripts": {
+    "pretest": "yarn run pretest-lint",
+    "pretest-lint": "eslint 'index.js'",
+    "pretest-lint-fix": "eslint 'index.js' --fix"
+  },
   "dependencies": {
     "@babel/core": "^7.14.6",
     "@monorepo-template/monorepo-helpers": "0.0.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-expo": "^8.4.0"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0"
   }
 }

@@ -1,4 +1,7 @@
-const {getMonorepoRoot, getMonorepoTsConfigs} = require('@monorepo-template/monorepo-helpers')
+const {
+  getMonorepoRoot,
+  getMonorepoTsConfigs,
+} = require('@monorepo-template/monorepo-helpers');
 
 // TODO: this seems to be quite slow. With DEBUG=*, the following is observed to be slow:
 // typescript-eslint:typescript-estree:createProjectProgram
@@ -14,5 +17,5 @@ module.exports = {
     },
     project: getMonorepoTsConfigs(__dirname),
     tsconfigRootDir: getMonorepoRoot(__dirname),
-  }
-}
+  },
+};

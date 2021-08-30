@@ -3,7 +3,15 @@
   "name": "@monorepo-template/webpack-config-expo",
   "version": "0.0.1",
   "main": "index.js",
+  "scripts": {
+    "pretest": "yarn run pretest-lint",
+    "pretest-lint": "eslint 'index.js'",
+    "pretest-lint-fix": "eslint 'index.js' --fix"
+  },
   "dependencies": {
     "@monorepo-template/monorepo-helpers": "0.0.1"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0"
   }
 }

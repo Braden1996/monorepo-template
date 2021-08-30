@@ -1,4 +1,6 @@
-const {getMonorepoPackagePrefix} = require('@monorepo-template/monorepo-helpers')
+const {
+  getMonorepoPackagePrefix,
+} = require('@monorepo-template/monorepo-helpers');
 
 const jestOverride = require('../overrides/jest');
 const prettierOverride = require('../overrides/prettier');
@@ -8,7 +10,7 @@ const typescriptParser = require('../overrides/typescriptParser');
 const monorepoPrefix = getMonorepoPackagePrefix(__dirname);
 
 const defaultConfig = {
-   // Parser doesn't seem to apply correctly via overrides
+  // Parser doesn't seem to apply correctly via overrides
   ...typescriptParser,
   extends: ['plugin:import/errors', 'plugin:import/warnings'],
   plugins: ['import', 'mysticatea', 'prefer-object-spread'],

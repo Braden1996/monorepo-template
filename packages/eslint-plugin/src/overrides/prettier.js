@@ -1,5 +1,5 @@
 module.exports = {
-  files: ['**/*.ts', '**/*.tsx', '**.*.js'],
+  files: ['**/*.ts', '**/*.tsx', '**/*.js'],
   extends: ['plugin:prettier/recommended'],
   plugins: ['prettier'],
   rules: {

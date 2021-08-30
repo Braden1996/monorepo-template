@@ -3564,6 +3564,7 @@ __metadata:
     "@monorepo-template/monorepo-helpers": 0.0.1
     babel-plugin-module-resolver: ^4.1.0
     babel-preset-expo: ^8.4.0
+    eslint: 7.32.0
   languageName: unknown
   linkType: soft
 
@@ -3805,6 +3806,7 @@ __metadata:
   resolution: "@monorepo-template/webpack-config-expo@workspace:packages/webpack-config-expo"
   dependencies:
     "@monorepo-template/monorepo-helpers": 0.0.1
+    eslint: 7.32.0
   languageName: unknown
   linkType: soft
 
@@ -4191,7 +4193,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/cli-platform-android@npm:^4.13.0":
+"@react-native-community/cli-platform-android@npm:^4.10.0, @react-native-community/cli-platform-android@npm:^4.13.0":
   version: 4.13.0
   resolution: "@react-native-community/cli-platform-android@npm:4.13.0"
   dependencies:
@@ -4209,7 +4211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/cli-platform-ios@npm:^4.13.0":
+"@react-native-community/cli-platform-ios@npm:^4.10.0":
   version: 4.13.0
   resolution: "@react-native-community/cli-platform-ios@npm:4.13.0"
   dependencies:
@@ -4262,7 +4264,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/cli@npm:^4.14.0":
+"@react-native-community/cli@npm:^4.10.0":
   version: 4.14.0
   resolution: "@react-native-community/cli@npm:4.14.0"
   dependencies:
@@ -22985,14 +22987,14 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-native@https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz":
-  version: 0.63.2
-  resolution: "react-native@https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz"
+"react-native@npm:0.63.4":
+  version: 0.63.4
+  resolution: "react-native@npm:0.63.4"
   dependencies:
     "@babel/runtime": ^7.0.0
-    "@react-native-community/cli": ^4.14.0
-    "@react-native-community/cli-platform-android": ^4.13.0
-    "@react-native-community/cli-platform-ios": ^4.13.0
+    "@react-native-community/cli": ^4.10.0
+    "@react-native-community/cli-platform-android": ^4.10.0
+    "@react-native-community/cli-platform-ios": ^4.10.0
     abort-controller: ^3.0.0
     anser: ^1.4.9
     base64-js: ^1.1.2
@@ -23020,7 +23022,7 @@ fsevents@^1.2.7:
     react: 16.13.1
   bin:
     react-native: ./cli.js
-  checksum: b4a2a4c1ea46391c321462235339d47420f9d96507278885af7617265a638fb75b6c94f4fafd08cf3c9d1e0fbe459c866fb81555c365f133b803389a6965b9c1
+  checksum: 6a603230dda3ce5a3bf093420727148dc157629e05f577f317382fa0384c59dfee796031736a653bc9743b8bb79e014613614ee27f9fa05b3733baffbade3958
   languageName: node
   linkType: hard
 

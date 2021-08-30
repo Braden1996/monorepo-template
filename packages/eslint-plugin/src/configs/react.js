@@ -1,6 +1,8 @@
-const path = require('path')
+const path = require('path');
 
-const {getMonorepoPackagePrefix} = require('@monorepo-template/monorepo-helpers')
+const {
+  getMonorepoPackagePrefix,
+} = require('@monorepo-template/monorepo-helpers');
 
 const monorepoPrefix = getMonorepoPackagePrefix(__dirname);
 

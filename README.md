@@ -59,16 +59,11 @@ Set the following secrets in your GitHub repository:
 
 ## Notes
 
-- Node package resolution combined with Yarn's hoisting really wrecks havoc on the React Native eco-system. In particular, there are lots of duplicate packages floating round and hoisting isn't feasibly determinable.
-  - To circumvent this, `packages/monorepo-helpers/getWorkspaceAliasFixes.js` takes a workspace path and a list of packages and returns a deterministic set of alias resolutions.
-  - These alias resolutions can be utilized by both Babel's `babel-plugin-module-resolver` and WebPack's `config.resolve.alias` - forcing a runtime to use a single physical copy of a package.
-  - Within a workspace, we can pass extra packages to apply this process to via `babel.config.js` and `webpack.config.js`.
-
-## Current Issues
-
-- `applications/mobile` and `applications/mobile-components-storybook` can bundle for devices via Metro, but not the web via WebPack.
-  - We have applied the relevant alias resolution adjustments to the WebPack config.
-  - This works when `babel.config.js` is deleted/renamed.
-    - If the file is present, but without meaningful content, the issue is still present.
-    - TODO: maybe we can log WebPack's babel config when the file is deleted, and compare the differences with our present file.
-      - Then we can conditionally apply the necessary changes (`packages/babel-preset-expo/isWebPlatformBabel.js` might help, but not sure it works).
+- Node package resolution combined with Yarn's hoisting really wrecks havoc on the React Native eco-system. In particular, there are lots of duplicate packages floating round which confuses the runtime.
+  - To circumvent this, we modify our Babel and WebPack configs to resolve certain packages in a deterministic manner (see `packages/monorepo-helpers/getWorkspaceAliasFixes.js`).
+    - This means our runtime only uses a single physical copy of these packages.
+    - For Babel, we utilise `babel-plugin-module-resolver`.
+    - For WebPack, we utilise `config.resolve.alias`.
+    - The workspace-specific config files for Babel and Webpack can pass extra packages if need be.
+  - For unknown reasons Expo is unable to bundle without `react-native` in the root `node_modules`. We force this by defining it as a `dependency` in the root `package.json`.
+  - The Expo WebPack build doesn't seem to like the existence of a `babel.config.js` - seemingly regardless of content. To bypass this, `@monorepo-template/webpack-config-expo` intercepts the Babel loader and disables use of the config file. We then reapply `babel-preset-expo` - as in `@expo/webpack-config/webpack/loaders/createBabelLoader.js`.
