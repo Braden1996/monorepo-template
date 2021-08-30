@@ -13,7 +13,7 @@
     "clean": "rimraf lib .expo",
     "pretest": "run-p 'pretest-typescript' 'pretest-lint'",
     "pretest-typescript": "tsc -b .",
-    "pretest-lint": "eslint '{index.js,App.tsx,storybook/**/*.{js,ts,tsx}'",
+    "pretest-lint": "eslint index.js App.tsx 'storybook/**/*.{js,ts,tsx}'",
     "pretest-lint-fix": "yarn run pretest-lint --fix",
     "postinstall": "expo-yarn-workspaces postinstall"
   },
