@@ -54,6 +54,7 @@ Below are some fairly loose instructions on where to get started with this templ
 
 Set the following secrets in your GitHub repository:
 
+- `EXPO_TOKEN`: token to authenticate with your [Expo organization and projects](https://expo.dev/settings/access-tokens).
 - `EXPO_ORGANIZATION`: the Expo organization which your `mobile-components` and `mobile-components-storybook` exist on.
 - `CHROMATIC_PROJECT_TOKEN`: your Chromatic project token we deploy your web-components Storybook to.
 
