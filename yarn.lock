@@ -2833,6 +2833,41 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expo/webpack-config@npm:^0.15.0":
+  version: 0.15.0
+  resolution: "@expo/webpack-config@npm:0.15.0"
+  dependencies:
+    "@babel/core": 7.9.0
+    "@expo/config": 5.0.9
+    babel-loader: 8.1.0
+    chalk: ^4.0.0
+    clean-webpack-plugin: ^3.0.0
+    copy-webpack-plugin: ~6.0.3
+    css-loader: ~3.6.0
+    expo-pwa: 0.0.94
+    file-loader: ~6.0.0
+    find-yarn-workspace-root: ~2.0.0
+    getenv: ^1.0.0
+    html-loader: ~1.1.0
+    html-webpack-plugin: ~4.3.0
+    is-wsl: ^2.0.0
+    mini-css-extract-plugin: ^0.5.0
+    node-html-parser: ^1.2.12
+    optimize-css-assets-webpack-plugin: ^5.0.3
+    pnp-webpack-plugin: ^1.5.0
+    postcss-safe-parser: ^4.0.2
+    react-dev-utils: ~11.0.1
+    semver: ~7.3.2
+    style-loader: ~1.2.1
+    terser-webpack-plugin: ^3.0.6
+    url-loader: ~4.1.0
+    webpack: 4.43.0
+    webpack-manifest-plugin: ~2.2.0
+    webpackbar: ^4.0.0
+  checksum: 646aeb9fa61edf21e412c475c92c5009f5671f9008bddce39b7e631d6c128fac7ca7d3c15cf304c71ce08f7ebcd54eed615a148c6e4438368fce82bbb43523aa
+  languageName: node
+  linkType: hard
+
 "@gar/promisify@npm:^1.0.1":
   version: 1.1.2
   resolution: "@gar/promisify@npm:1.1.2"
@@ -3823,6 +3858,7 @@ __metadata:
   resolution: "@monorepo-template/mobile-components-storybook@workspace:applications/mobile-components-storybook"
   dependencies:
     "@babel/core": ~7.9.0
+    "@expo/webpack-config": ^0.15.0
     "@monorepo-template/babel-preset-expo": 0.0.1
     "@monorepo-template/brand": 0.0.1
     "@monorepo-template/eslint-plugin": 0.0.1
@@ -14037,6 +14073,21 @@ __metadata:
   bin:
     expo-pwa: build/cli.js
   checksum: 4740bf812bbfe6aa4a4eb9c8426810517ed2054708e983ade6b07e2278ad2f080cbf3d48b929013326a7be0dc7f9b09bcc3c4c3ea3683aa52afc82b4655fa4d6
+  languageName: node
+  linkType: hard
+
+"expo-pwa@npm:0.0.94":
+  version: 0.0.94
+  resolution: "expo-pwa@npm:0.0.94"
+  dependencies:
+    "@expo/config": 5.0.9
+    "@expo/image-utils": 0.3.16
+    chalk: ^4.0.0
+    commander: 2.20.0
+    update-check: 1.5.3
+  bin:
+    expo-pwa: build/cli.js
+  checksum: f06e03b14f5fd3a1413f530d74c207e2aacbc79c1dbba7c2f8f220d17729fdb754cc0c8579e64086f781564ffd728ebfdf99b11f337cf6b2fd94cb56fdf65998
   languageName: node
   linkType: hard
 

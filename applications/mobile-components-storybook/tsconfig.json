@@ -16,7 +16,7 @@
       { "path": "../../packages/mobile-components" }
   ],
   "files": ["index.js", "App.tsx"],
-  "include": ["typings", "storybook"],
+  "include": ["typings", "\\.storybook"],
   "exclude": [
     "**/node_modules/*",
     "babel.config.js",
