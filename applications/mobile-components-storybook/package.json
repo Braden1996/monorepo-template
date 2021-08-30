@@ -63,6 +63,7 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@expo/webpack-config": "^0.15.0",
     "@monorepo-template/babel-preset-expo": "0.0.1",
     "@monorepo-template/eslint-plugin": "0.0.1",
     "@monorepo-template/webpack-config-expo": "0.0.1",
