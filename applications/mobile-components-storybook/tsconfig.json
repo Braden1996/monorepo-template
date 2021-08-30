@@ -16,11 +16,12 @@
       { "path": "../../packages/mobile-components" }
   ],
   "files": [
+    "index.js",
     "App.tsx",
-    ".storybook/addons.ts",
-    ".storybook/rn-addons.ts",
-    ".storybook/generated-story-loader.js",
-    ".storybook/generated-story-loader.d.ts"
+    "storybook/addons.ts",
+    "storybook/rn-addons.ts",
+    "storybook/generated-story-loader.js",
+    "storybook/generated-story-loader.d.ts"
   ],
   "include": ["typings"],
   "exclude": [

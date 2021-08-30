@@ -10,8 +10,8 @@ import * as React from 'react';
 
 import { ThemeProvider } from '@monorepo-template/mobile-components';
 
-import './.storybook/rn-addons';
-import { loadStories } from './.storybook/generated-story-loader.js';
+import './storybook/rn-addons';
+import { loadStories } from './storybook/generated-story-loader.js';
 
 addParameters({ options: { theme: themes.dark } });
 

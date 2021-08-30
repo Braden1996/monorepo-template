@@ -2,7 +2,7 @@
   "name": "@monorepo-template/mobile-components-storybook",
   "version": "0.0.1",
   "private": true,
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -14,7 +14,30 @@
     "pretest": "run-p 'pretest-typescript' 'pretest-lint'",
     "pretest-typescript": "tsc -b .",
     "pretest-lint": "eslint App.tsx",
-    "pretest-lint-fix": "eslint App.tsx --fix"
+    "pretest-lint-fix": "eslint App.tsx --fix",
+    "postinstall": "expo-yarn-workspaces postinstall"
+  },
+  "expo-yarn-workspaces": {
+    "symlinks": [
+      "@unimodules/core",
+      "@unimodules/react-native-adapter",
+      "expo-application",
+      "expo-asset",
+      "expo-constants",
+      "expo-error-recovery",
+      "expo-file-system",
+      "expo-font",
+      "expo-image-loader",
+      "expo-keep-awake",
+      "expo-modules-core",
+      "expo-splash-screen",
+      "expo-structured-headers",
+      "expo-updates-interface",
+      "expo-updates",
+      "react",
+      "unimodules-app-loader",
+      "unimodules-task-manager-interface"
+    ]
   },
   "config": {
     "react-native-storybook-loader": {
@@ -33,13 +56,16 @@
     "expo-status-bar": "~1.0.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native": "0.63.4",
+    "react-native-unimodules": "^0.14.6",
     "react-native-web": "^0.17.1",
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "~7.9.0",
+    "@monorepo-template/babel-preset-expo": "0.0.1",
     "@monorepo-template/eslint-plugin": "0.0.1",
+    "@monorepo-template/webpack-config-expo": "0.0.1",
     "@storybook/addon-actions": "^5.3",
     "@storybook/addon-knobs": "^5.3",
     "@storybook/addon-links": "^5.3",
@@ -52,6 +78,7 @@
     "@types/react-native": "~0.63.2",
     "@types/styled-components-react-native": "^5.1.1",
     "eslint": "7.32.0",
+    "expo-yarn-workspaces": "^1.5.2",
     "npm-run-all": "4.1.5",
     "react-native-storybook-loader": "^2.0.4",
     "rimraf": "3.0.2",

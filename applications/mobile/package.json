@@ -2,7 +2,7 @@
   "name": "@monorepo-template/mobile",
   "version": "0.0.1",
   "private": true,
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -17,7 +17,29 @@
     "pretest-typescript": "tsc -b .",
     "pretest-lint": "eslint 'src/**/*.{js,ts,tsx}'",
     "pretest-lint-fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
-    "coverage": "yarn run --coverage"
+    "coverage": "yarn run --coverage",
+    "postinstall": "expo-yarn-workspaces postinstall"
+  },
+  "expo-yarn-workspaces": {
+    "symlinks": [
+      "@unimodules/core",
+      "@unimodules/react-native-adapter",
+      "expo-application",
+      "expo-asset",
+      "expo-constants",
+      "expo-error-recovery",
+      "expo-file-system",
+      "expo-font",
+      "expo-image-loader",
+      "expo-keep-awake",
+      "expo-modules-core",
+      "expo-splash-screen",
+      "expo-structured-headers",
+      "expo-updates-interface",
+      "expo-updates",
+      "unimodules-app-loader",
+      "unimodules-task-manager-interface"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
@@ -36,17 +58,20 @@
     "expo-web-browser": "~9.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native": "0.63.4",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
+    "react-native-unimodules": "^0.14.6",
     "react-native-web": "^0.17.1",
     "styled-components": "^5.3.0",
     "utility-types": "^3.10.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
+    "@babel/core": "~7.9.0",
+    "@monorepo-template/babel-preset-expo": "0.0.1",
     "@monorepo-template/eslint-plugin": "0.0.1",
+    "@monorepo-template/webpack-config-expo": "0.0.1",
     "@testing-library/jest-native": "^4.0.1",
     "@testing-library/react-native": "^7.2.0",
     "@types/jest": "^26.0.24",
@@ -54,6 +79,7 @@
     "@types/react-native": "~0.63.2",
     "@types/styled-components-react-native": "^5.1.1",
     "eslint": "7.32.0",
+    "expo-yarn-workspaces": "^1.5.2",
     "jest": "26.6.0",
     "npm-run-all": "4.1.5",
     "react-test-renderer": "^17.0.2",

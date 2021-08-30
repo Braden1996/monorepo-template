@@ -57,44 +57,18 @@ Set the following secrets in your GitHub repository:
 - `EXPO_ORGANIZATION`: the Expo organization which your `mobile-components` and `mobile-components-storybook` exist on.
 - `CHROMATIC_PROJECT_TOKEN`: your Chromatic project token we deploy your web-components Storybook to.
 
+## Notes
+
+- Node package resolution combined with Yarn's hoisting really wrecks havoc on the React Native eco-system. In particular, there are lots of duplicate packages floating round and hoisting isn't feasibly determinable.
+  - To circumvent this, `packages/monorepo-helpers/getWorkspaceAliasFixes.js` takes a workspace path and a list of packages and returns a deterministic set of alias resolutions.
+  - These alias resolutions can be utilized by both Babel's `babel-plugin-module-resolver` and WebPack's `config.resolve.alias` - forcing a runtime to use a single physical copy of a package.
+  - Within a workspace, we can pass extra packages to apply this process to via `babel.config.js` and `webpack.config.js`.
+
 ## Current Issues
 
-- `applications/mobile` and `applications/mobile-components-storybook` are unable to bundle for devices.
-  - Issue is related to workspaces and hoisted packages.
-  - Unable to get things working with just `expo-yarn-workspaces`.
-    - `packages/expo-monorepo-config` contains various configs extending `expo-yarn-workspaces`.
-    - With these, Expo is able to bundle for web (`react-native-web` + WebPack) and seems to work!
-  - Bundling via Metro for iOS presents the following issue:
-    - `applications/mobile`:
-
-      ```
-      Unable to resolve module ./views/assets/back-icon.png from /Users/braden/Development/monorepo-template/applications/mobile/node_modules/@react-navigation/stack/src/index.tsx:
-
-      None of these files exist:
-        * back-icon.png
-        * node_modules/@react-navigation/stack/src/views/assets/back-icon.png/index(.native|.ios.ts|.native.ts|.ts|.ios.tsx|.native.tsx|.tsx|.ios.js|.native.js|.js|.ios.jsx|.native.jsx|.jsx|.ios.json|.native.json|.json)
-        11 | export const Assets = [
-        12 |   // eslint-disable-next-line import/no-commonjs
-      > 13 |   require('./views/assets/back-icon.png'),
-          |            ^
-        14 |   // eslint-disable-next-line import/no-commonjs
-        15 |   require('./views/assets/back-icon-mask.png'),
-        16 | ];
-      ```
-
-    - `applications/mobile-components-storybook`:
-
-      ```
-      Unable to resolve module ./.storybook/rn-addons from /Users/braden/Development/monorepo-template/applications/mobile-components-storybook/App.tsx: 
-
-      None of these files exist:
-        * .storybook/rn-addons(.native|.ios.ts|.native.ts|.ts|.ios.tsx|.native.tsx|.tsx|.ios.js|.native.js|.js|.ios.jsx|.native.jsx|.jsx|.ios.json|.native.json|.json)
-        * .storybook/rn-addons/index(.native|.ios.ts|.native.ts|.ts|.ios.tsx|.native.tsx|.tsx|.ios.js|.native.js|.js|.ios.jsx|.native.jsx|.jsx|.ios.json|.native.json|.json)
-        11 | import { ThemeProvider } from '@monorepo-template/mobile-components';
-        12 |
-      > 13 | import './.storybook/rn-addons';
-          |         ^
-        14 | import { loadStories } from './.storybook/generated-story-loader.js';
-        15 |
-        16 | addParameters({ options: { theme: themes.dark } });
-      ```
+- `applications/mobile` and `applications/mobile-components-storybook` can bundle for devices via Metro, but not the web via WebPack.
+  - We have applied the relevant alias resolution adjustments to the WebPack config.
+  - This works when `babel.config.js` is deleted/renamed.
+    - If the file is present, but without meaningful content, the issue is still present.
+    - TODO: maybe we can log WebPack's babel config when the file is deleted, and compare the differences with our present file.
+      - Then we can conditionally apply the necessary changes (`packages/babel-preset-expo/isWebPlatformBabel.js` might help, but not sure it works).

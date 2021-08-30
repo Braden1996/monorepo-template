@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "@monorepo-template/webpack-config-expo",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "@monorepo-template/monorepo-helpers": "0.0.1"
+  }
+}
