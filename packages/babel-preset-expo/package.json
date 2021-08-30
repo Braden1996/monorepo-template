@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "yarn run pretest-lint",
     "pretest-lint": "eslint 'index.js'",
-    "pretest-lint-fix": "eslint 'index.js' --fix"
+    "pretest-lint-fix": "yarn run pretest-lint --fix"
   },
   "dependencies": {
     "@babel/core": "^7.14.6",

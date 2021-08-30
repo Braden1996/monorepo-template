@@ -13,8 +13,8 @@
     "clean": "rimraf lib .expo",
     "pretest": "run-p 'pretest-typescript' 'pretest-lint'",
     "pretest-typescript": "tsc -b .",
-    "pretest-lint": "eslint App.tsx",
-    "pretest-lint-fix": "eslint App.tsx --fix",
+    "pretest-lint": "eslint '{index.js,App.tsx,storybook/**/*.{js,ts,tsx}'",
+    "pretest-lint-fix": "yarn run pretest-lint --fix",
     "postinstall": "expo-yarn-workspaces postinstall"
   },
   "expo-yarn-workspaces": {
@@ -71,6 +71,7 @@
     "@storybook/addon-links": "^5.3",
     "@storybook/addon-ondevice-actions": "^5.3.23",
     "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/react": "~5.2.1",
     "@storybook/react-native": "^5.3.25",
     "@storybook/react-native-server": "^5.3.23",
     "@storybook/theming": "^5.3.21",

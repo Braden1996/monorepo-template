@@ -1,0 +1,83 @@
+name: "Continuous Integration"
+
+on:
+  push:
+
+jobs:
+  test:
+    name: "Yarn Test"
+    runs-on: ubuntu-latest
+    if: ${{ !contains(toJSON(github.event.commits.*.message), '[skip ci]') }}
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v2
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn2-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn2-
+
+      - name: "Install Node dependencies"
+        run: yarn install --immutable
+
+      - name: "Run pretest"
+        run: yarn run pretest
+
+      - name: "Run tests"
+        run: yarn run test
+
+  check-chromatic-deployment:
+    name: 'Check if we can Deploy Storybook to Chromatic'
+    runs-on: ubuntu-latest
+    outputs:
+        secret_exists: ${{ steps.secret_check.outputs.SECRET_EXISTS }}
+    steps:
+        - id: secret_check
+          env:
+              CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          if: "${{ env.CHROMATIC_PROJECT_TOKEN != '' }}"
+          run: echo "::set-output name=SECRET_EXISTS::true"
+
+  chromatic-deployment:
+    name: "Deploy Storybook to Chromatic"
+    needs: [check-chromatic-deployment]
+    if: needs.check-chromatic-deployment.outputs.secret_exists == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/web-components
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn2-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn2-
+
+      - name: "Install Node dependencies"
+        run: yarn install --immutable
+
+      - name: Build TypeScript Project References for packages/web-components
+        run: yarn run build
+
+      - name: Publish to Chromatic
+        run: yarn run chromatic
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

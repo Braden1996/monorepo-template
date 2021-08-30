@@ -2,11 +2,14 @@
   "private": true,
   "name": "@monorepo-template/webpack-config-expo",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "pretest": "yarn run pretest-lint",
-    "pretest-lint": "eslint 'index.js'",
-    "pretest-lint-fix": "eslint 'index.js' --fix"
+    "pretest-lint": "eslint 'src/**/*.js'",
+    "pretest-lint-fix": "yarn run pretest-lint --fix"
   },
   "dependencies": {
     "@monorepo-template/monorepo-helpers": "0.0.1"

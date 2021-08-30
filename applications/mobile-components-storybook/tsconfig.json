@@ -15,15 +15,8 @@
       { "path": "../../packages/brand" },
       { "path": "../../packages/mobile-components" }
   ],
-  "files": [
-    "index.js",
-    "App.tsx",
-    "storybook/addons.ts",
-    "storybook/rn-addons.ts",
-    "storybook/generated-story-loader.js",
-    "storybook/generated-story-loader.d.ts"
-  ],
-  "include": ["typings"],
+  "files": ["index.js", "App.tsx"],
+  "include": ["typings", "storybook"],
   "exclude": [
     "**/node_modules/*",
     "babel.config.js",

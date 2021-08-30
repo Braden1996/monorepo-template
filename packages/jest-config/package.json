@@ -10,7 +10,7 @@
     "scripts": {
         "pretest": "yarn run pretest-lint",
         "pretest-lint": "eslint '{presets,src}/**/*.{js,ts,tsx}'",
-        "pretest-lint-fix": "eslint '{presets,src}/**/*.{js,ts,tsx}' --fix"
+        "pretest-lint-fix": "yarn run pretest-lint --fix"
     },
     "devDependencies": {
         "@monorepo-template/eslint-plugin": "0.0.1",

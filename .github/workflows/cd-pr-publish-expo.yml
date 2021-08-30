@@ -58,7 +58,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Publish Mobile-Components-Storybook Expo app
-        working-directory: packages/mobile-components-storybook
+        working-directory: applications/mobile-components-storybook
         run: expo publish --release-channel=pr-${{ github.event.number }}
 
       - name: Publish Mobile Expo app

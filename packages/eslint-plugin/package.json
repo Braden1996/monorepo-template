@@ -6,7 +6,7 @@
     "scripts": {
         "pretest": "yarn run pretest-lint",
         "pretest-lint": "eslint 'src/**/*.{js,ts,tsx}'",
-        "pretest-lint-fix": "eslint 'src/**/*.{js,ts,tsx}' --fix"
+        "pretest-lint-fix": "yarn run pretest-lint --fix"
     },
     "devDependencies": {
         "@monorepo-template/monorepo-helpers": "0.0.1",

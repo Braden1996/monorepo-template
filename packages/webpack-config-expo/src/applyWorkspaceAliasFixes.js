@@ -1,5 +1,3 @@
-const { createWebpackConfigAsync } = require('expo-yarn-workspaces/webpack');
-
 const {
   getWorkspaceAliasFixes,
 } = require('@monorepo-template/monorepo-helpers');
@@ -15,7 +13,7 @@ const skipImports = [
   'react-native/Libraries/Image/assetPathUtils',
 ];
 
-function applyWorkspaceAliasFixes(
+module.exports = function applyWorkspaceAliasFixes(
   config,
   workspacePath,
   extraWorkspaceAliasesForPackages,
@@ -46,33 +44,5 @@ function applyWorkspaceAliasFixes(
     ...aliases,
     ...expoAliases,
     'react-native': expoAliases['react-native$'],
-  };
-}
-
-function disableBabelConfigFile(config, workspacePath) {
-  const babelRule = config.module.rules[1].oneOf.find(rule =>
-    rule.use?.loader?.includes('babel-loader'),
-  );
-  if (!babelRule) throw new Error('Cannot find Babel module rule.');
-
-  const babelPresetExpo = 'babel-preset-expo';
-  babelRule.use.options.presets = [
-    getWorkspaceAliasFixes(workspacePath, [babelPresetExpo])[babelPresetExpo],
-  ];
-  babelRule.use.options.configFile = false;
-}
-
-module.exports = (workspacePath, extraWorkspaceAliasesForPackages) => {
-  return async (env, argv) => {
-    const config = await createWebpackConfigAsync(env, argv);
-
-    applyWorkspaceAliasFixes(
-      config,
-      workspacePath,
-      extraWorkspaceAliasesForPackages,
-    );
-    disableBabelConfigFile(config, workspacePath);
-
-    return config;
   };
 };

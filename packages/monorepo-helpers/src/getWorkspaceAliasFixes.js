@@ -16,17 +16,26 @@ module.exports = function getWorkspaceAliasFixes(
 
   // Some packages (e.g. react-native-web) aren't being hoisted correctly.
   for (const package of packages) {
+    // If package is a string, then we do a 1-to-1 mapping.
+    // Otherwise, we map aliasPackage -> resolutionPackage.
+    const aliasPackage =
+      typeof package === 'string' ? package : Object.keys(package)[0];
+    const resolutionPackage =
+      typeof package === 'string' ? package : Object.values(package)[0];
+
     const workspaceAliasPath = path.resolve(
-      path.join(workspacePath, 'node_modules', package),
+      path.join(workspacePath, 'node_modules', resolutionPackage),
     );
-    const rootPath = path.resolve(path.join('../../node_modules', package));
+    const rootPath = path.resolve(
+      path.join('../../node_modules', resolutionPackage),
+    );
 
     if (nodeLikeFsExistsSync(rootPath)) {
-      aliases[package] = path.resolve(rootPath);
+      aliases[aliasPackage] = path.resolve(rootPath);
     } else if (nodeLikeFsExistsSync(workspaceAliasPath)) {
-      aliases[package] = path.resolve(workspaceAliasPath);
+      aliases[aliasPackage] = path.resolve(workspaceAliasPath);
     } else {
-      console.warn(`Cannot find package '${package}'`);
+      console.warn(`Cannot find package '${resolutionPackage}'`);
     }
   }
 
